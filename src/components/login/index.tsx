@@ -11,6 +11,7 @@ import {
 } from '../../jotai/index';
 import {ExclamationIcon} from "@heroicons/react/solid";
 import { address_slice } from '../../utils/chain/address';
+import { useWallet } from '../../hooks/useWallet';
 
 
 const Login=()=>{
@@ -32,8 +33,33 @@ const Login=()=>{
   const [InstallSubstrate,setInstallSubstrate] = useState(false)
   // metamask wallet instal check
   const [InstallMeatMask,setInstallMeatMask] = useState(false)
+  const [shouldConnectWallet, setShouldConnectWallet] = useState(false);
+  
+  const { connectWallet, account, address } = useWallet();
+  useEffect(async () => {
+  	if (shouldConnectWallet) {
+  		const hasMetaMask = await connectWallet();
+  		if (!hasMetamask) {
+      		SetAccountChooseValue(0)
+      		setInstallMeatMask(true)
+  		} else {
+  			SetAccountChooseValue(1)
+  			SetIntactWalletAddress(account)
+  			setWalletAddress(address)
+  			SetOpenWalletListState(false)
+        	SetWalletButtonShow(true)
+        	location.reload();
+  		}
+  		setShouldConnectWallet(false);
+  	}
+  }, [shouldConnectWallet]);
+  
+  function loginMeatMask() {
+  	setShouldConnectWallet(true)
+  }
+  
   // login metamask
-  async function  loginMeatMask () {
+  async function  loginMeatMask2 () {
     // @ts-ignore
    const install = await window.ethereum
     if(install){
