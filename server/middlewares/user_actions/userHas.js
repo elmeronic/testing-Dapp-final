@@ -8,6 +8,7 @@ module.exports = async (product, user, type) => {
   let hasBought = null;
   let hasOnWishlist = null;
   let hasReviewed = null;
+
   if (user) {
     //cart bahek aru ko lagi check gareko
     if (type !== 'carts') {

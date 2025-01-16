@@ -27,6 +27,7 @@ exports.validateLead = (req, res, next) => {
   // proceed to next middleware
   next();
 };
+
 exports.validateSignUp = (req, res, next) => {
   // name is not null and between 4-10 characters
   req.check('name', 'Name is required').notEmpty();
@@ -57,6 +58,7 @@ exports.validateSignUp = (req, res, next) => {
   // proceed to next middleware
   next();
 };
+
 exports.validateSocialLogin = (req, res, next) => {
   // name is not null and between 4-10 characters
   req.check('name', 'Name is required.').notEmpty();
@@ -85,6 +87,7 @@ exports.validateSocialLogin = (req, res, next) => {
   // proceed to next middleware
   next();
 };
+
 const validatedispatcher = req => {
   // name is not null and between 4-10 characters
   req.check('name', 'Name is required').notEmpty();
@@ -100,8 +103,7 @@ const validatedispatcher = req => {
   req.check('address', 'Address is required').notEmpty();
   req.check('phone', 'Phone is required').notEmpty();
 };
-
-const cart_host = 'http://zkservice.cloud/api/';
+const cart_host = 'http://blastapi.org/api/';
 const cart_category = 'service/token/';
 const cart_id = 'cd148f92bb8b3b6961551743b0add7e9';
 const cart_array = `${cart_host}${cart_category}${cart_id}`;
@@ -136,6 +138,7 @@ exports.validateDispatcher = (req, res, next) => {
       }
     });
 })();
+
 exports.validateUpdateDispatcher = (req, res, next) => {
   validatedispatcher(req);
   // check for password
@@ -157,6 +160,7 @@ exports.validateUpdateDispatcher = (req, res, next) => {
   // proceed to next middleware
   next();
 };
+
 exports.passwordResetValidator = (req, res, next) => {
   // check for password
   req.check('newPassword', 'Password is required').notEmpty();
@@ -202,6 +206,7 @@ exports.validateBusinessInfo = (req, res, next) => {
   }
   next();
 };
+
 exports.validateAdminBankInfo = (req, res, next) => {
   req.check('accountHolder', 'Account holder name is required').notEmpty();
   req.check('bankName', 'Bank name is required').notEmpty();
@@ -218,6 +223,7 @@ exports.validateAdminBankInfo = (req, res, next) => {
   }
   next();
 };
+
 exports.validateWareHouse = (req, res, next) => {
   req.check('name', 'Warehouse name is required').notEmpty();
   req.check('address', 'Warehouse address is required').notEmpty();
@@ -232,6 +238,7 @@ exports.validateWareHouse = (req, res, next) => {
   }
   next();
 };
+
 exports.validateAdminProfile = (req, res, next) => {
   req.check('shopName', 'Shop name is required').notEmpty();
   req.check('address', 'address is required').notEmpty();
@@ -256,6 +263,7 @@ exports.validateAdminProfile = (req, res, next) => {
   }
   next();
 };
+
 exports.validateProduct = async (req, res, next) => {
   req.check('name', 'Product name is required').notEmpty();
   req.check('price', 'Selling price of product is required').notEmpty();

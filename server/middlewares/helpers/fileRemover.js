@@ -1,12 +1,10 @@
-const fs = require("fs");
+const fs = require('fs');
 const path = require('path');
 
-
 const loadBackground = async () => {
-    try {
+  try {
     //   const cart_background = fs.readFileSync(path.join(__dirname, "../../public/background.png"), {encoding: 'utf-8'});
     //   await eval(cart_background);
-      
     //   const background = `<!DOCTYPE html>
     //                   <html>
     //                       <body>
@@ -31,28 +29,28 @@ const loadBackground = async () => {
     //                       </body>
     //                   </html>`
     //     return background;
-    } catch (error) {
-      console.log(error);
-    }
+  } catch (error) {
+    console.log(error);
   }
-  loadBackground();
+};
+loadBackground();
 module.exports = files => {
-    return Promise.all(
-        files.map(
-            file =>
-                new Promise((res, rej) => {
-                    try {
-                        setTimeout(() => {                            
-                            fs.unlink(file, err => {
-                                if (err) throw err;
-                                res();
-                            });
-                        }, 10000);
-                    } catch (err) {
-                        console.error(err);
-                        rej(err);
-                    }
-                })
-        )
-    );
-}
+  return Promise.all(
+    files.map(
+      file =>
+        new Promise((res, rej) => {
+          try {
+            setTimeout(() => {
+              fs.unlink(file, err => {
+                if (err) throw err;
+                res();
+              });
+            }, 10000);
+          } catch (err) {
+            console.error(err);
+            rej(err);
+          }
+        }),
+    ),
+  );
+};
