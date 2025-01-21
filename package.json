@@ -5,8 +5,8 @@
   "author": "henryliu",
   "license": "GPL3",
   "scripts": {
-    "start": "concurrently \"node server/app.js\" \"next --port 3002\"",
-    "build": "concurrently \"node server/app.js\" \"next build\"",
+    "start": "concurrently \"nodemon server/app.js\" \"next --port 3002\"",
+    "build": "concurrently \"nodemon server/app.js\" \"next build\"",
     "test": "concurrently \"node server/app.js\" \"next test\"",
     "eject": "concurrently \"node server/app.js\" \"next eject\""
   },
@@ -44,6 +44,7 @@
     "near-api-js": "^0.44.2",
     "next": "latest",
     "next-i18next": "^10.2.0",
+    "nodemon": "^3.1.9",
     "paytmchecksum": "^1.5.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
